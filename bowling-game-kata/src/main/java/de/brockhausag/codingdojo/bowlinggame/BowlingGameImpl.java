@@ -1,9 +1,7 @@
 package de.brockhausag.codingdojo.bowlinggame;
 
-import java.util.List;
-
 public class BowlingGameImpl implements BowlingGame {
-    private int rolls[] = new int[21];
+    private final int[] rolls = new int[21];
     private int currentRoll = 0;
 
     public void roll(int pins) {
