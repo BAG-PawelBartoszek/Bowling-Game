@@ -7,3 +7,5 @@
 /dataSources/
 /dataSources.local.xml
 /.idea/
+/bowling-game-kata/target/
+/bowling-game-kata.iml
