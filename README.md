@@ -1,20 +1,23 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Einleitung 
+Dieses Projekt stellt die Plattform für die Umsetzung des Bowling Game Katas von Robert C. Martin (aka Uncle Bob) dar. Dessen Beschreibung findet sich in seinem [Blog](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata)
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Bowling Punkteverteilung
+Ein Spiel besteht aus 10 Runden. In jeder Runde hat der Spieler die Möglichkeit 10 Kegel mit 2 Würfen abzuwerfen. Die Punktezahl einer Runde ergibt sich aus der Summe der mit beiden Würfen umgeworfenen Kegel und eines evtl. Bonuses für Strikes oder Spares.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Ein Spare liegt vor, wenn der Spieler alle 10 Kegel mit den beiden Würfen einer Runde umwirft. In diesem Fall erhält der Spieler einen Bonus in der Höhe der Punkte seines nächsten Wurfs. Dieser Bonus wird natürlich erst in der nächsten Runde ermittelt.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Ein Strike liegt vor, wenn der Spieler mit seinem ersten Wurf einer Runde alle 10 Kegel umwirft. In diesem Fall ergibt sich der Bonus aus der Summer seiner nächsten beiden Würfe.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Wirft der Spieler in der 10. Runde einen Strike oder Spare, so darf er unmittelbar im Anschluss einen bzw. zwei weitere Würfe durchführen. Wird in der letzten Runde ein unerlaubter Wurf durchgeführt, wird eine Exception erwartet.
+
+![Beispiel für Punkte im Bowling](assets/bowling_score.png)
+
+# Aufgabenstellung
+Schreibe eine Anwendung in einer frei wählbaren Sprache, die den Zustand eines Bowling Spiels darstellt. Es soll dabei zu jeder Zeit die gesamtpunktzahl sowie eine Übersicht über die bisher gespielten Runden geben.
+
+Die folgende Schnittstelle sollte Aufrufern bereitgestellt werden:
+
+![Interface](assets/bowling_game.png)
+
+# Iterationen
+Um an diesem Beispiel die Vorteile iterativer Methodik zu demonstrieren, sind im [Git Repository](https://dev.azure.com/brockhaus-ag/Coding%20Dojo/_git/Bowling%20Game%20Kata) Unit-Tests in den Sprachen Java, C# und JavaScript hinterlegt. AUch eine Musterimplementierung ist dort zu finden. Checkt einfach den jeweiligen Branch aus und testet eure Implementierung stufenweise ab.
