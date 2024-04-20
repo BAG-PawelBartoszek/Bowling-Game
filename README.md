@@ -13,11 +13,11 @@ Wirft der Spieler in der 10. Runde einen Strike oder Spare, so darf er unmittelb
 ![Beispiel für Punkte im Bowling](assets/bowling_score.png)
 
 # Aufgabenstellung
-Schreibe eine Anwendung in einer frei wählbaren Sprache, die den Zustand eines Bowling Spiels darstellt. Es soll dabei zu jeder Zeit die gesamtpunktzahl sowie eine Übersicht über die bisher gespielten Runden geben.
+Schreibe eine Anwendung in einer frei wählbaren Sprache, die den Zustand eines Bowling Spiels darstellt. Es soll dabei zu jeder Zeit die Gesamtpunktzahl geben.
 
 Die folgende Schnittstelle sollte Aufrufern bereitgestellt werden:
 
 ![Interface](assets/bowling_game.png)
 
 # Iterationen
-Um an diesem Beispiel die Vorteile iterativer Methodik zu demonstrieren, sind im [Git Repository](https://dev.azure.com/brockhaus-ag/Coding%20Dojo/_git/Bowling%20Game%20Kata) Unit-Tests in den Sprachen Java, C# und JavaScript hinterlegt. AUch eine Musterimplementierung ist dort zu finden. Checkt einfach den jeweiligen Branch aus und testet eure Implementierung stufenweise ab.
+Um an diesem Beispiel die Vorteile iterativer Methodik zu demonstrieren, sind im [Git Repository](https://dev.azure.com/brockhaus-ag/Coding%20Dojo/_git/Bowling%20Game%20Kata) Unit-Tests in Java hinterlegt. Auch eine Musterimplementierung ist dort zu finden. Checkt einfach den Branch aus und testet eure Implementierung stufenweise ab. Beginnt mit einer Implementierung für den Endzustand und erweitert diese dann um die Möglichkeit nach jedem Frame den aktuellen Punktestand anzufragen. 
