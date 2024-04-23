@@ -1,50 +1,57 @@
 package de.brockhausag.codingdojo.bowlinggame;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BowlingGameImpl implements BowlingGame {
-    private final int[] rolls = new int[21];
-    private int currentRoll = 0;
+
+    private final List<Frame> frames;
+
+    public BowlingGameImpl() {
+        this.frames = new ArrayList<>();
+        addNewFrame();
+    }
 
     public void roll(int pins) {
-        rolls[currentRoll++] = pins;
+        if (getActualFrame().isDone()) {
+            addNewFrame().addRoll(pins);
+            return;
+        }
+
+        getActualFrame().addRoll(pins);
     }
 
     @Override
     public int getScore() {
-        int score = 0;
-        int frameIndex = 0;
-        for (int frame = 0; frame < 10; frame++) {
-            if (isStrike(frameIndex)) {
-                score += 10 + strikeBonus(frameIndex);
-                frameIndex++;
-            } else if (isSpare(frameIndex)) {
-                score += 10 + spareBonus(frameIndex);
-                frameIndex += 2;
-            } else {
-                score += sumOfBallsInFrame(frameIndex);
-                frameIndex += 2;
-            }
+        return getActualFrame().getScore();
+    }
+
+    public Frame addNewFrame() {
+        if (this.frames.size() == 10) {
+            throw new IllegalStateException("GAME OVER, CHEAT!!!");
         }
-        return score;
+
+        Frame frame = null;
+
+        if (this.frames.isEmpty()) {
+            frame = new Frame();
+        }
+
+        if (!this.frames.isEmpty() && this.frames.size() < 9) {
+            frame = new Frame(getActualFrame());
+            getActualFrame().setNextFrame(frame);
+        }
+
+        if (this.frames.size() == 9) {
+            frame = new TenthFrame(getActualFrame());
+            getActualFrame().setNextFrame(frame);
+        }
+
+        this.frames.add(frame);
+        return frame;
     }
 
-    private boolean isStrike(int frameIndex) {
-        return rolls[frameIndex] == 10;
+    private Frame getActualFrame() {
+        return frames.get(frames.size() - 1);
     }
-
-    private int sumOfBallsInFrame(int frameIndex) {
-        return rolls[frameIndex] + rolls[frameIndex+1];
-    }
-
-    private int spareBonus(int frameIndex) {
-        return rolls[frameIndex+2];
-    }
-
-    private int strikeBonus(int frameIndex) {
-        return rolls[frameIndex+1] + rolls[frameIndex+2];
-    }
-
-    private boolean isSpare(int frameIndex) {
-        return rolls[frameIndex]+rolls[frameIndex+1] == 10;
-    }
-
 }
