@@ -274,4 +274,44 @@ class FrameTest {
             assertThat(actualBonusScore).isEqualTo(expectedBonusScore);
         }
     }
+
+    @Nested
+    class ScoreOfNextTwoRolls {
+        private Frame frame;
+
+        @BeforeEach
+        void setUp() {
+            this.frame = new Frame();
+        }
+
+        @Test
+        void testOneNextFrame() {
+            var nextFrame = new Frame(frame);
+            frame.setNextFrame(nextFrame);
+
+            frame.addRoll(10);
+            nextFrame.addRoll(5);
+            nextFrame.addRoll(5);
+
+            var actualScore = frame.getScoreOfNextTwoRolls();
+
+            assertThat(actualScore).isEqualTo(10);
+        }
+
+        @Test
+        void testNextFrameIsStrike() {
+            var nextFrame = new Frame(frame);
+            var secondNextFrame = new Frame(nextFrame);
+            frame.setNextFrame(nextFrame);
+            nextFrame.setNextFrame(secondNextFrame);
+
+            frame.addRoll(10);
+            nextFrame.addRoll(10);
+            secondNextFrame.addRoll(10);
+
+            var actualScore = frame.getScoreOfNextTwoRolls();
+
+            assertThat(actualScore).isEqualTo(20);
+        }
+    }
 }

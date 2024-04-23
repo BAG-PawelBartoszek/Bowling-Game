@@ -60,9 +60,7 @@ public class Frame {
 
     protected int getScoreOfNextTwoRolls() {
         var scoreOfNextRoll = getScoreofNextRoll();
-        var scoreOfSecondToNextRoll = getNextFrame().isStrike() ?
-                getNextFrame().getScoreofNextRoll()
-                : getNextFrame().getScoreSecondRoll();
+        var scoreOfSecondToNextRoll = Objects.nonNull(getNextFrame()) ? getScoreOfSecondToNextRoll() : 0;
 
         return scoreOfNextRoll + scoreOfSecondToNextRoll;
     }
@@ -97,5 +95,11 @@ public class Frame {
 
     private Frame getNextFrame() {
         return nextFrame;
+    }
+
+    private int getScoreOfSecondToNextRoll() {
+        return getNextFrame().isStrike() ?
+                getNextFrame().getScoreofNextRoll()
+                : getNextFrame().getScoreSecondRoll();
     }
 }
