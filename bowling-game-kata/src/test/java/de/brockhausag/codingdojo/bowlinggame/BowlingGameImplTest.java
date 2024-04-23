@@ -113,6 +113,73 @@ class BowlingGameImplTest {
         assertThat(actualScore).isEqualTo(expectedScore);
     }
 
+
+    // Drehbuchtest
+    @Test
+    void testExampleGameWithFrames() {
+        // Game starts
+        assertThat(game.getScore()).isEqualTo(0);
+
+        // First frame
+        game.roll(1);
+        game.roll(4);
+
+        assertThat(game.getScore()).isEqualTo(5);
+
+        // Second frame
+        game.roll(4);
+        game.roll(5);
+
+        assertThat(game.getScore()).isEqualTo(14);
+
+        // Third frame - spare
+        game.roll(6);
+        game.roll(4);
+
+        assertThat(game.getScore()).isEqualTo(24);
+
+        // Fourth frame - spare
+        game.roll(5);
+        game.roll(5);
+
+        assertThat(game.getScore()).isEqualTo(39);
+
+        // Fifth frame - strike
+        game.roll(10);
+
+        assertThat(game.getScore()).isEqualTo(59);
+
+        // Sixth frame
+        game.roll(0);
+        game.roll(1);
+
+        assertThat(game.getScore()).isEqualTo(61);
+
+        // Seventh frame - spare
+        game.roll(7);
+        game.roll(3);
+
+        assertThat(game.getScore()).isEqualTo(71);
+
+        // Eighth frame - spare
+        game.roll(6);
+        game.roll(4);
+
+        assertThat(game.getScore()).isEqualTo(87);
+
+        // Ninth frame - strike
+        game.roll(10);
+
+        assertThat(game.getScore()).isEqualTo(107);
+
+        // Tenth frame - spare
+        game.roll(2);
+        game.roll(8);
+        game.roll(6);
+
+        assertThat(game.getScore()).isEqualTo(133);
+    }
+
     private void rollMany(int numberOfRolls, int numberOfPins) {
         for (int rollIndex = 0; rollIndex < numberOfRolls; rollIndex++) {
             game.roll(numberOfPins);
