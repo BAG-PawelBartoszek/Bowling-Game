@@ -1,6 +1,5 @@
 package de.brockhausag.codingdojo.bowlinggame;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,11 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BowlingGameImplTest {
 
     BowlingGame game;
-
-    @BeforeEach
-    void setUp() {
-        this.game = new BowlingGameImpl();
-    }
 
     @Test
     void testGutterGame() {
